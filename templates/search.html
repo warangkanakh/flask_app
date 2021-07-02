@@ -157,14 +157,14 @@
         </head>
     <body>
         <div class="navbar">
-            <a href="/publication">งานวิจัยทั้งหมด</a>
+            <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
                 {% for user_i in userlist %}
-            <a href="/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+            <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
                 {% endfor %}
               </div>
             </div> 
@@ -180,7 +180,7 @@
                 </div>
               </div>
               <div class="topnav">
-                <form action="http://127.0.0.1:5000/search">
+                <form action="https://cs-kku-research-tracking.herokuapp.com/search">
                   <input type="text" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
