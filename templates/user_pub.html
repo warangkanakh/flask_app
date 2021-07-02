@@ -138,7 +138,7 @@
     <hr>
     {% for user_pub_i in user_pub %}
     <p>{{user_pub_i['authors']~", " ~user_pub_i['year']~", "}}</p>
-    <p>{{user_pub_i['title']~", "~user_pub_i['conference']}} </p>
+    <p>{{user_pub_i['title']~", "~user_pub_i['conference']~", " ~publist_i['volume']~", "~publist_i['page']~". "}} </p>
     <hr>
     {% endfor %}
     <body>

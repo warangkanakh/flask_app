@@ -157,7 +157,7 @@
         <hr>
         {% for publist_i in publist %}
         <p>{{publist_i['authors']~", " ~publist_i['year']~", "}}</p>
-        <p>{{publist_i['title']~", "~publist_i['conference']}} </p>
+        <p>{{publist_i['title']~", "~publist_i['conference']~", " ~publist_i['volume']~", "~publist_i['page']~". "}} </p>
         <hr>
         {% endfor %}
     </body>

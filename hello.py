@@ -69,7 +69,15 @@ def userpublication(username):
 
 @app.route("/")
 def home():
-    return render_template("index.html",userlist = userlist)
+    yeardict = {}
+    yearlist = []
+    str_year = str(2020)
+
+    for x in publist:
+        if re.findall(str_year,str(x['year'])):
+            yeardict = x
+            yearlist.append(yeardict)
+    return render_template("index.html",publist = yearlist,userlist = userlist,published_year = published_year)
 
 
 @app.route("/publication")

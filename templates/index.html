@@ -126,14 +126,26 @@ body {
                 {% endfor %}
               </div>
             </div> 
+            <a href="download/all">ดาวน์โหลดข้อมูลงานวิจัย</a>
             <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div> 
-            
           </div>
+        </div>
+      </div> 
+
+
+
+          <div>งานวิจัยที่ตีพิมพ์ทั้งหมด {{publist|length}} งาน</div>
+        <hr>
+        {% for publist_i in publist %}
+        <p>{{publist_i['authors']~", " ~publist_i['year']~", "}}</p>
+        <p>{{publist_i['title']~", "~publist_i['conference']~", " ~publist_i['volume']~", "~publist_i['page']~". "}} </p>
+        <hr>
+        {% endfor %}
 
     </body>
 </html>
