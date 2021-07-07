@@ -76,6 +76,11 @@ def userpub(username):
     return render_template("user_pub.html", user_pub = user_pub,userlist = userlist,fullname = fullname, name = username)
 
 
+@app.route("/update")
+def updatepub():
+    return "ไม่มีข้อมูลงานวิจัยเพิ่มเติม"
+
+
 
 @app.route("/publication/<year>")
 def yearpub(year):

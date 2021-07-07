@@ -178,12 +178,13 @@
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                <a href="https://cs-kku-research-tracking.herokuapp.com/download/all"> ทั้งหมด </a>
+                <a href="https://cs-kku-research-tracking.herokuapp.com/download/all">ทั้งหมด</a>
                   {% for published_year_i in published_year %}
               <a href="https://cs-kku-research-tracking.herokuapp.com/download/{{published_year_i}}"> {{published_year_i}} </a>
                   {% endfor %}
                 </div>
               </div>
+              <a href="https://cs-kku-research-tracking.herokuapp.com/update">อัพเดตข้อมูลงานวิจัย</a>
               <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">
