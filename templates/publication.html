@@ -118,7 +118,7 @@
         </head>
     <body>
         <div class="navbar">
-          <a href="http://127.0.0.1:5000/publication">งานวิจัยทั้งหมด</a>
+          <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
@@ -131,7 +131,7 @@
                   <div class="dropdown-content">
                     {% for user_i in userlist %}
                     {% if user_i['field'] == "CS" %}
-                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
                   {% endif %}
                     {% endfor %}
                   </div>
@@ -143,7 +143,7 @@
                   <div class="dropdown-content">
                     {% for user_i in userlist %}
                     {% if user_i['field'] == "IT" %}
-                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
                   {% endif %}
                     {% endfor %}
                   </div>
@@ -155,7 +155,7 @@
                   <div class="dropdown-content">
                     {% for user_i in userlist %}
                     {% if user_i['field'] == "GIS" %}
-                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
                   {% endif %}
                     {% endfor %}
                   </div>
@@ -169,7 +169,7 @@
                 </button>
                 <div class="dropdown-content">
                   {% for published_year_i in published_year %}
-              <a href="http://127.0.0.1:5000/publication/{{published_year_i}}"> {{published_year_i}} </a>
+              <a href="https://cs-kku-research-tracking.herokuapp.com/publication/{{published_year_i}}"> {{published_year_i}} </a>
                   {% endfor %}
                 </div>
               </div>
@@ -178,9 +178,9 @@
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                <a href="http://127.0.0.1:5000/download/all"> ทั้งหมด </a>
+                <a href="https://cs-kku-research-tracking.herokuapp.com/download/all"> ทั้งหมด </a>
                   {% for published_year_i in published_year %}
-              <a href="http://127.0.0.1:5000/download/{{published_year_i}}"> {{published_year_i}} </a>
+              <a href="https://cs-kku-research-tracking.herokuapp.com/download/{{published_year_i}}"> {{published_year_i}} </a>
                   {% endfor %}
                 </div>
               </div>
