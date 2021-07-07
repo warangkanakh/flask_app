@@ -4,7 +4,6 @@ from flask import Flask, render_template,request
 import pymongo
 import re
 import flask_excel as excel
-import data
 
 
 
@@ -108,6 +107,10 @@ def searchpub():
             resultdict = i
             resultlist.append(resultdict)
     return render_template("search.html",publist = resultlist,userlist = userlist,published_year = published_year)
+
+@app.route("/update")
+def updatepub():
+    return "ยังไม่มีงานวิจัยที่ตีพิมพ์เพิ่ม"
 
 
     
