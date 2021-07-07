@@ -37,7 +37,6 @@ for i in range(1994,2021):
         published_year.append(i)
 
 
-
 def userpublication(username):
     user = user_db.find_one({'name' : username})
     indexname = user['indexname']
@@ -47,6 +46,7 @@ def userpublication(username):
             user_dict = i
             userlist.append(user_dict)
     return userlist
+
 
 
 
