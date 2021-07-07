@@ -1,72 +1,75 @@
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .navbar {
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
 
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.topnav .search-container {
+        .topnav .search-container {
   float: right;
 }
 
@@ -107,45 +110,99 @@ body {
   .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
+  .publication{
+    text-align: center;
+  }
 }
-
-</style>
-</head>
-
+        </style>
+        </head>
     <body>
-
         <div class="navbar">
-            <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
+          <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
-                {% for user_i in userlist %}
-            <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
-                {% endfor %}
+                <div class="dropdown">
+                  <button class="dropbtn">วิทยาการคอมพิวเตอร์
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "CS" %}
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
+                <div class="dropdown">
+                  <button class="dropbtn">เทคโนโลยีสารสนเทศ
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "IT" %}
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
+                <div class="dropdown">
+                  <button class="dropbtn">ภูมิสารสนเทศศาสตร์
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "GIS" %}
+                <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
               </div>
             </div> 
-            <a href="https://cs-kku-research-tracking.herokuapp.com/download/all">ดาวน์โหลดข้อมูลงานวิจัย</a>
-            <div class="topnav">
+
+            <div class="dropdown">
+                <button class="dropbtn">ปีที่ตีพิมพ์
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  {% for published_year_i in published_year %}
+              <a href="https://cs-kku-research-tracking.herokuapp.com/publication/{{published_year_i}}"> {{published_year_i}} </a>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">ดาวน์โหลดข้อมูลงานวิจัยตามปีที่ตีพิมพ์
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <a href="https://cs-kku-research-tracking.herokuapp.com/download/all"> ทั้งหมด </a>
+                  {% for published_year_i in published_year %}
+              <a href="https://cs-kku-research-tracking.herokuapp.com/download/{{published_year_i}}"> {{published_year_i}} </a>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div> 
+              
           </div>
-        </div>
-      </div> 
 
 
 
-          <div>งานวิจัยที่ตีพิมพ์ทั้งหมด {{publist|length}} งาน</div>
+        </div class = "publication">
+        <div>
         <hr>
         {% for publist_i in publist %}
         <p>{{publist_i['authors']~", " ~publist_i['year']~", "}}</p>
         <p>{{publist_i['title']~", "~publist_i['conference']~", " ~publist_i['volume']~", "~publist_i['page']~". "}} </p>
         <hr>
         {% endfor %}
-
+      </div>
     </body>
 </html>

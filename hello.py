@@ -37,6 +37,7 @@ for i in range(1994,2021):
         published_year.append(i)
 
 
+
 def userpublication(username):
     user = user_db.find_one({'name' : username})
     indexname = user['indexname']
@@ -49,22 +50,7 @@ def userpublication(username):
 
 
 
-
-
 @app.route("/")
-def home():
-    yeardict = {}
-    yearlist = []
-    str_year = str(2020)
-
-    for x in publist:
-        if re.findall(str_year,str(x['year'])):
-            yeardict = x
-            yearlist.append(yeardict)
-    return render_template("index.html",publist = yearlist,userlist = userlist,published_year = published_year)
-
-
-@app.route("/publication")
 def publication():
     return render_template("publication.html",publist = publist,userlist = userlist,published_year = published_year)
 
