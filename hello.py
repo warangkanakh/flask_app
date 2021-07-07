@@ -36,6 +36,7 @@ for i in user_db.find():
 for i in range(1994,2021):
         published_year.append(i)
 
+published_year.sort(reverse=True)
 
 def userpublication(username):
     user = user_db.find_one({'name' : username})
