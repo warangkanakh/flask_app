@@ -53,8 +53,8 @@ def userpublication(username):
 
 @app.route("/")
 def publication():
-    newlist = sorted(publist, key=lambda k: k['year'],reverse=True) 
-    return render_template("index.html",publist = newlist,userlist = userlist,published_year = published_year)
+    #newlist = sorted(publist, key=lambda k: k['year'],reverse=True) 
+    return render_template("index.html",publist = publist,userlist = userlist,published_year = published_year)
 
 @app.route("/user")
 def user():
