@@ -76,10 +76,11 @@ def userpub(username):
         if re.findall(reg,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
+            
         elif re.findall(thainame,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
-    return render_template("user_pub.html", user_pub = publist,userlist = userlist,fullname = fullname, name = username)
+    return render_template("user_pub.html", user_pub = userpub,userlist = userlist,fullname = fullname, name = username)
 
 
 
