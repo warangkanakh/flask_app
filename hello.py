@@ -65,13 +65,17 @@ def user():
 @app.route("/userpub/<username>")
 def userpub(username):
     user = user_db.find_one({'name' : username})
-    fullname = user['thainame'] + " " + user['thaisurname']    
+    fullname = user['thainame'] + " " + user['thaisurname'] 
+    thainame = user['thainame']   
     indexname = user['indexname']
     user_dict = {}
     user_pub = []
     reg = indexname
     for i in publist:
         if re.findall(reg,i['authors']):
+            user_dict = i
+            user_pub.append(user_dict)
+        if re.findall(thainame,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
     return render_template("user_pub.html", user_pub = user_pub,userlist = userlist,fullname = fullname, name = username)
