@@ -115,18 +115,18 @@ body {
     <body>
 
         <div class="navbar">
-            <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
+            <a href="http://127.0.0.1:5000/publication">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
                 {% for user_i in userlist %}
-            <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+            <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
                 {% endfor %}
               </div>
             </div> 
-            <a href="https://cs-kku-research-tracking.herokuapp.com/download/all">ดาวน์โหลดข้อมูลงานวิจัย</a>
+            <a href="http://127.0.0.1:5000/download/all">ดาวน์โหลดข้อมูลงานวิจัย</a>
             <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">

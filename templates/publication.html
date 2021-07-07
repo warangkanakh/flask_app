@@ -110,20 +110,56 @@
   .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
+  .publication{
+    text-align: center;
+  }
 }
         </style>
         </head>
     <body>
         <div class="navbar">
-            <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
+          <a href="http://127.0.0.1:5000/publication">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
-                {% for user_i in userlist %}
-            <a href="https://cs-kku-research-tracking.herokuapp.com/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
-                {% endfor %}
+                <div class="dropdown">
+                  <button class="dropbtn">วิทยาการคอมพิวเตอร์
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "CS" %}
+                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
+                <div class="dropdown">
+                  <button class="dropbtn">เทคโนโลยีสารสนเทศ
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "IT" %}
+                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
+                <div class="dropdown">
+                  <button class="dropbtn">ภูมิสารสนเทศศาสตร์
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    {% for user_i in userlist %}
+                    {% if user_i['field'] == "GIS" %}
+                <a href="http://127.0.0.1:5000/userpub/{{user_i['name']}}"> {{user_i['thainame'] ~ " " ~ user_i['thaisurname']}} </a>
+                  {% endif %}
+                    {% endfor %}
+                  </div>
+                </div> 
               </div>
             </div> 
 
@@ -133,11 +169,21 @@
                 </button>
                 <div class="dropdown-content">
                   {% for published_year_i in published_year %}
-              <a href="https://cs-kku-research-tracking.herokuapp.com/publication/{{published_year_i}}"> {{published_year_i}} </a>
+              <a href="http://127.0.0.1:5000/publication/{{published_year_i}}"> {{published_year_i}} </a>
                   {% endfor %}
                 </div>
               </div>
-              <a href="https://cs-kku-research-tracking.herokuapp.com/download/all">ดาวน์โหลดข้อมูลงานวิจัย</a>
+              <div class="dropdown">
+                <button class="dropbtn">ดาวน์โหลดข้อมูลงานวิจัยตามปีที่ตีพิมพ์
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <a href="http://127.0.0.1:5000/download/all"> ทั้งหมด </a>
+                  {% for published_year_i in published_year %}
+              <a href="http://127.0.0.1:5000/download/{{published_year_i}}"> {{published_year_i}} </a>
+                  {% endfor %}
+                </div>
+              </div>
               <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">
@@ -149,16 +195,14 @@
 
 
 
-        </div>
-        
-        
-        
-        <div>งานวิจัยที่ตีพิมพ์ทั้งหมด {{publist|length}} งาน</div>
+        </div class = "publication">
+        <div>
         <hr>
         {% for publist_i in publist %}
         <p>{{publist_i['authors']~", " ~publist_i['year']~", "}}</p>
         <p>{{publist_i['title']~", "~publist_i['conference']~", " ~publist_i['volume']~", "~publist_i['page']~". "}} </p>
         <hr>
         {% endfor %}
+      </div>
     </body>
 </html>

@@ -36,22 +36,6 @@ for i in user_db.find():
 for i in range(1994,2021):
         published_year.append(i)
 
-titledict = {}
-titlelist = []
-authorsdict = {}
-authorslist = []
-conferencedict = {}
-conferencelist = []
-volumedict = {}
-volumelist = []
-issuedict = {}
-issuelist = []
-pagedict = {}
-pagelist = []
-yeardict = {}
-yearlist = []
-monthdict = {}
-monthlist = []
 
 def userpublication(username):
     user = user_db.find_one({'name' : username})
@@ -137,38 +121,113 @@ def searchpub():
     return render_template("search.html",publist = resultlist,userlist = userlist,published_year = published_year)
 
 
-@app.route('/download/<keyword>', methods=['GET'])
+    
+
+
+@app.route('/download/<keyword>')
 def download_data(keyword):
+    keyword = str(keyword)
+    titledict = {}
+    titlelist = []
+    authorsdict = {}
+    authorslist = []
+    conferencedict = {}
+    conferencelist = []
+    volumedict = {}
+    volumelist = []
+    issuedict = {}
+    issuelist = []
+    pagedict = {}
+    pagelist = []
+    yeardict = {}
+    yearlist = []
+    monthdict = {}
+    monthlist = []
     for i in publist:
+        try:
+            user = user_db.find_one({'name' : keyword}) 
+            indexname = user['indexname']
+            indexname = str(indexname)
+            if re.findall(indexname,i['authors']):
+                titledict = i['title']
+                titlelist.append(titledict)
+
+                authorsdict = i['authors']
+                authorslist.append(authorsdict)
+
+                conferencedict = i['conference']
+                conferencelist.append(conferencedict)
+
+                volumedict = i['volume']
+                volumelist.append(volumedict)
+
+                issuedict = i['issue']
+                issuelist.append(issuedict)
+
+                pagedict = i['page']
+                pagelist.append(pagedict)
+
+                yeardict = i['year']
+                yearlist.append(yeardict)
+
+                monthdict = i['month']
+                monthlist.append(monthdict)
+
+        except:
+            if keyword == "all" :
+                titledict = i['title']
+                titlelist.append(titledict)
+
+                authorsdict = i['authors']
+                authorslist.append(authorsdict)
+
+                conferencedict = i['conference']
+                conferencelist.append(conferencedict)
+
+                volumedict = i['volume']
+                volumelist.append(volumedict)
+
+                issuedict = i['issue']
+                issuelist.append(issuedict)
+
+                pagedict = i['page']
+                pagelist.append(pagedict)
+
+                yeardict = i['year']
+                yearlist.append(yeardict)
+
+                monthdict = i['month']
+                monthlist.append(monthdict)
+
+            if re.findall(keyword,str(i['year'])):
+                titledict = i['title']
+                titlelist.append(titledict)
+
+                authorsdict = i['authors']
+                authorslist.append(authorsdict)
+
+                conferencedict = i['conference']
+                conferencelist.append(conferencedict)
+
+                volumedict = i['volume']
+                volumelist.append(volumedict)
+
+                issuedict = i['issue']
+                issuelist.append(issuedict)
+
+                pagedict = i['page']
+                pagelist.append(pagedict)
+
+                yeardict = i['year']
+                yearlist.append(yeardict)
+
+                monthdict = i['month']
+                monthlist.append(monthdict)
         
-        titledict = i['title']
-        titlelist.append(titledict)
-
-        authorsdict = i['authors']
-        authorslist.append(authorsdict)
-
-        conferencedict = i['conference']
-        conferencelist.append(conferencedict)
-
-        volumedict = i['volume']
-        volumelist.append(volumedict)
-
-        issuedict = i['issue']
-        issuelist.append(issuedict)
-
-        pagedict = i['page']
-        pagelist.append(pagedict)
-
-        yeardict = i['year']
-        yearlist.append(yeardict)
-
-        monthdict = i['month']
-        monthlist.append(monthdict)
-
+    d = {'title' :titlelist,'authors': authorslist,'conference':conferencelist,'volume':volumelist,'issue':issuelist,'page':pagelist,'year':yearlist,'month':monthlist}
     excel.init_excel(app)
     extension_type = "csv"
-    filename = "Article" + "." + extension_type 
-    d = {'title' :titlelist,'authors': authorslist,'conference':conferencelist,'volume':volumelist,'issue':issuelist,'page':pagelist,'year':yearlist,'month':monthlist}
+    filename = "Article_" + keyword + "." + extension_type     
     return excel.make_response_from_dict(d, file_type=extension_type, file_name=filename)
 
 
