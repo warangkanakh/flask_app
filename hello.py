@@ -76,10 +76,9 @@ def userpub(username):
         if re.findall(reg,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
-        if re.findall(thainame,i['authors']):
+        elif re.findall(thainame,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
-    newlist = sorted(user_pub, key=lambda k: k['year'],reverse=True) 
     return render_template("user_pub.html", user_pub = publist,userlist = userlist,fullname = fullname, name = username)
 
 
