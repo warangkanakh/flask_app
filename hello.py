@@ -53,7 +53,8 @@ def userpublication(username):
 
 @app.route("/")
 def publication():
-    return render_template("index.html",publist = publist,userlist = userlist,published_year = published_year)
+    newlist = sorted(publist, key=lambda k: k['year'],reverse=True) 
+    return render_template("index.html",publist = newlist,userlist = userlist,published_year = published_year)
 
 @app.route("/user")
 def user():
@@ -78,7 +79,8 @@ def userpub(username):
         if re.findall(thainame,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
-    return render_template("user_pub.html", user_pub = user_pub,userlist = userlist,fullname = fullname, name = username)
+    newlist = sorted(user_pub, key=lambda k: k['year'],reverse=True) 
+    return render_template("user_pub.html", user_pub = newlist,userlist = userlist,fullname = fullname, name = username)
 
 
 
