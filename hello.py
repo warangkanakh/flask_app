@@ -80,7 +80,7 @@ def userpub(username):
         elif re.findall(thainame,i['authors']):
             user_dict = i
             user_pub.append(user_dict)
-    return render_template("user_pub.html", user_pub = userpub,userlist = userlist,fullname = fullname, name = username)
+    return render_template("user_pub.html", user_pub =user_pub,userlist = userlist,fullname = fullname, name = username)
 
 
 
