@@ -1,14 +1,15 @@
+
 from flask import Flask, render_template,request
-from flask_pymongo import PyMongo
+
 import pymongo
 import re
 import flask_excel as excel
+import data
+
+
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = 'mongodb+srv://warangkana_kh:Sadaharu123@cluster0.h4ueo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-mongodb_client  = PyMongo(app)
-db = mongodb_client.db
 
 
 myclient = pymongo.MongoClient("mongodb+srv://warangkana_kh:Sadaharu123@cluster0.h4ueo.mongodb.net/publication?retryWrites=true&w=majority")
@@ -52,7 +53,7 @@ def userpublication(username):
 
 @app.route("/")
 def publication():
-    return render_template("publication.html",publist = publist,userlist = userlist,published_year = published_year)
+    return render_template("index.html",publist = publist,userlist = userlist,published_year = published_year)
 
 @app.route("/user")
 def user():
@@ -76,9 +77,6 @@ def userpub(username):
     return render_template("user_pub.html", user_pub = user_pub,userlist = userlist,fullname = fullname, name = username)
 
 
-@app.route("/update")
-def updatepub():
-    return "ไม่มีข้อมูลงานวิจัยเพิ่มเติม"
 
 
 
@@ -92,7 +90,7 @@ def yearpub(year):
         if re.findall(str_year,str(x['year'])):
             yeardict = x
             yearlist.append(yeardict)
-    return render_template("publication.html",publist = yearlist,userlist = userlist,published_year = published_year)
+    return render_template("index.html",publist = yearlist,userlist = userlist,published_year = published_year)
 
 
 @app.route("/search")

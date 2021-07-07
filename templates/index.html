@@ -118,7 +118,8 @@
         </head>
     <body>
         <div class="navbar">
-          <a href="https://cs-kku-research-tracking.herokuapp.com/publication">งานวิจัยทั้งหมด</a>
+          <a href="https://cs-kku-research-tracking.herokuapp.com/update">อัพเดตงานวิจัย</a>
+          <a href="https://cs-kku-research-tracking.herokuapp.com/">งานวิจัยทั้งหมด</a>
             <div class="dropdown">
               <button class="dropbtn">งานวิจัยที่ตีพิมพ์โดยอาจารย์ในภาควิชา 
                 <i class="fa fa-caret-down"></i>
@@ -184,14 +185,13 @@
                   {% endfor %}
                 </div>
               </div>
-              <a href="https://cs-kku-research-tracking.herokuapp.com/update">อัพเดตข้อมูลงานวิจัย</a>
               <div class="topnav">
                 <form action="/search" method="GET">
                   <input type="text" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div> 
-              
+        
           </div>
 
 
